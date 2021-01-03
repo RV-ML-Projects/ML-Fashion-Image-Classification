@@ -66,7 +66,7 @@ locket==0.2.0
 Markdown==3.3.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
-mkl-fft==1.2.0
+mkl-fft==1.0.6
 mkl-random==1.1.1
 mkl-service==2.3.0
 mock==4.0.2
