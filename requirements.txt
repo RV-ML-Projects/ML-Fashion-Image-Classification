@@ -184,7 +184,7 @@ tensorflow-estimator==2.4.0
 termcolor==1.1.0
 terminado==0.9.1
 testpath==0.4.4
-threadpoolctl @ file:///tmp/tmp9twdgx9k/threadpoolctl-2.1.0-py3-none-any.whl
+
 
 tifffile==2020.10.1
 
