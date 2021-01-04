@@ -124,7 +124,7 @@ mkl-random==1.1.1
 mkl-service==2.3.0
 mock @ file:///tmp/build/80754af9/mock_1607622725907/work
 more-itertools @ file:///tmp/build/80754af9/more-itertools_1605111547926/work
-mock==4.0.2
+
 
 mpmath==1.1.0
 msgpack @ file:///C:/ci/msgpack-python_1607965861637/work
