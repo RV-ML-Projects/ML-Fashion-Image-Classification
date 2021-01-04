@@ -26,7 +26,7 @@ certifi==2020.12.5
 
 click==7.1.2
 
-clyent==1.2.2
+clyent==1.2.1
 
 comtypes==1.1.8
 conda==4.9.2
