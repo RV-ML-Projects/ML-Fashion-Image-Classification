@@ -160,7 +160,7 @@ scikit-image==0.17.2
 
 simplegeneric==0.8.1
 
-sip==4.19.13
+sip==5.5.0
 
 snowballstemmer==2.0.0
 sortedcollections==1.2.1
