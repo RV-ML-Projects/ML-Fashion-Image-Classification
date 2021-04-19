@@ -1,35 +1,174 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <title>Apparel Prediction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <title>Apparel Prediction</title>
+  
+  <!-- <script src="./Script.js"></script> -->
+  <!-- <script>
+    console.log(Date());
+  </script> -->
+  <style>
+    *{
+      padding:0;margin:0;box-sizing: border-box;
+      outline:none;
+    }
+    .AreYouSure{
+      border: 1px solid #59d8ff;
+      padding:30px;
+      margin: 20px;
+      margin-top: 100px;
+      background-color: aliceblue;
+      color:#000000;
+      border-radius: 5px;
+    }
+    button{
+      padding:15px 50px ;
+      border:none;
+      outline:none;
+      margin:5px;
+      min-height:40px;max-height: 50px;
+      min-width: 190px;
+      max-width: 200px;
+      border-radius: 5px;
+      font-size:large;
+      font-weight: 600;
+    }
+    /* .AreYouSure>h4{
+      margin:0;padding:0;line-height:2rem;
+    } */
+    .yes{
+      background:linear-gradient(45deg, #3aff4a,#025309,#be79ff);
+      color:#ffffff;
+    }
+    .no{
+      background:linear-gradient(45deg, #a647ff,#ff0000,#ff9a9a);
+      color:#ffffff;
+    }
+    .ThanksforFeedback{
+      /* height:150px; */
+      /* width:auto; */
+      margin-top: 100px;
+      border: 1px solid #ffdf27;
+      padding:25px;
+      border-radius: 5px;
+      background:linear-gradient(45deg, #16c725,#33b13d,#19c561);
+      display:none;
+    }
+    .chooseClass{
+      margin-top: 80px;
+      padding:20px 1px;
+      border: 1px solid #e6ff8e;
+      border-radius: 5px;
+      background:linear-gradient(to right, #363636,#0c0c0c,#0a0a0a);
+      display:none;
+    }
+    .chooseClass>h4{
+      margin-bottom: 20px;
+      padding:10px;
+      color: #ff0b0b;
+          }
+  </style>
 </head>
-<body style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 75%, #000000 100%); height:95vh;">
+
+<body
+  style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 75%, #000000 100%); height:95vh;">
 
   <div style="margin-top: 20px;" class="container">
-  <div class="row">
+    <div class="row">
 
-    <div class="col-sm">
-      <span style="max-height:60vh;min-height: 300px;" class="border border-primary">
-        <img src="{{ user_image }}" alt="User Image" class="img-thumbnail">
-      </span>
+      <div class="col-sm">
+        <span style="max-height:60vh;min-height: 300px;" class="border border-primary">
+          <img id="FeedImage" src="{{ user_image }}" alt="User Image" class="img-thumbnail">
+        </span>
+        
+      </div>
+
+      <div
+        style="justify-content:space-between;align-items: center; text-align:center; margin-top: 15px; color:aliceblue"
+        class="col-sm-7">
+        <h1>Images Look's Like <span id="Predicted" class="badge badge-primary">{{product}}</span></h1>
+        <a class="btn btn-dark btn-lg" href="/"><i class="fas fa-reply"></i> Go Back to Home</a>
+
+        <div class="Questions container">
+          <div class="AreYouSure">
+            <h4>Is Predicted Result Correct.?</h4>
+            <button class="yes" type="button" value="yes" onclick="FunctionYes()">Yes</button>
+            <button class="no" type="button" value="no" onclick="FunctionNo()">No</button>
+          </div>
+          <div class="ThanksforFeedback">
+            <h4>Thanks For your Feedback</h4>
+          </div>
+          <script>
+            let AreYouSure = document.getElementsByClassName ("AreYouSure");
+            let ThanksforFeedback = document.getElementsByClassName ("ThanksforFeedback");
+            let chooseClass = document.getElementsByClassName ("chooseClass");
+            let Button= document.getElementsByTagName("button")[0];
+            function FunctionYes(){
+              AreYouSure[0].style.display = "none";  
+              ThanksforFeedback[0].style.display = "block";  
+              };
+            let FunctionNo=()=>{
+              AreYouSure[0].style.display = "none";  
+              chooseClass[0].style.display = "block"; 
+            };
+            let FunctionLast=()=>{
+              chooseClass[0].style.display = "none"; 
+              ThanksforFeedback[0].style.display = "block";  
+            
+            };
+            let FeedImage = document.getElementById ("FeedImage").src;
+            
+            let f1=(objButton)=>{  
+              let buttonValue= objButton.value;
+              let CorrectOutPut= objButton.textContent;
+              console.log("Image Link= " +FeedImage );
+              console.log("Class Value= " +buttonValue);
+              
+              let PredictedResult = document.getElementById("Predicted").textContent;
+              console.log("Predicted Result= " +PredictedResult);
+              console.log("Correct Provided Value= " +CorrectOutPut);
+
+
+
+              };
+
+          </script>
+          <div class="chooseClass">
+            <h4>Please Select The Correct Prediction form The Below List</h4>
+            <button type="button" value=0 onclick="FunctionLast(f1(this));">T-shirt/Top</button>
+            <button type="button" value=1 onclick="FunctionLast(f1(this));">Trouser</button>
+            <button type="button" value=2 onclick="FunctionLast(f1(this));">Pullover</button>
+            <button type="button" value=3 onclick="FunctionLast(f1(this));">Dress</button>
+            <button type="button" value=4 onclick="FunctionLast(f1(this));">Coat</button>
+            <button type="button" value=5 onclick="FunctionLast(f1(this));">Sandal</button>
+            <button type="button" value=6 onclick="FunctionLast(f1(this));">Shirt</button>
+            <button type="button" value=7 onclick="FunctionLast(f1(this));">Sneaker</button>
+            <button type="button" value=8 onclick="FunctionLast(f1(this));">Bag</button>
+            <button type="button" value=9 onclick="FunctionLast(f1(this));">Ankle boot</button>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <div style="justify-content:space-between;align-items: center; text-align:center; margin-top: 15px; color:aliceblue" class="col-sm-7">
-      <h1>Images Look's Like <span class="badge badge-primary">{{product}}</span></h1>
-      <a class="btn btn-dark btn-lg" href="/"><i class="fas fa-reply"></i> Go Back to Home</a>
-    </div>
-
   </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
